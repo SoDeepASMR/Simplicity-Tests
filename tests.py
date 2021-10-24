@@ -1,6 +1,5 @@
 import random, sympy, sys
 import colorlabels as cl
-from decimal import *
 
 
 def gcd(a: int, b: int) -> int:
@@ -15,7 +14,7 @@ def gcd(a: int, b: int) -> int:
 def Test_Ferma(n: int) -> bool:
     for i in range(1000):
         g = random.randint(2, n - 1)
-        if (g ** (n - 1)) % n != 1:
+        if pow(g, n-1, n) != 1:
             return False
     return True
 
@@ -24,7 +23,7 @@ def Test_SSt(n: int) -> bool:
     for i in range(1000):
         a = random.randint(2, n - 1)
         g = ((n - 1) // 2)
-        r = (a ** g) % n
+        r = pow(a, g, n)
         if gcd(a, n) > 1:
             return False
 
@@ -42,7 +41,7 @@ def Test_MR(n: int) -> bool:
         r = []
         while j > 0:
             r.append(j % 2)
-            j = j / 2
+            j = j // 2
             return r
 
     def MillerRabin(m: int) -> bool:
@@ -52,11 +51,11 @@ def Test_MR(n: int) -> bool:
             d = 1
             for i in range(len(b) - 1, -1, -1):
                 x = d
-                d = (d * d) % m
+                d = pow(d*d, 1, m)
                 if d == 1 and x != 1 and x != m - 1:
                     return False
                 if b[i] == 1:
-                    d = (d * a) % m
+                    d = pow(d*a, 1, m)
                     if d != 1:
                         return False
                     return True
