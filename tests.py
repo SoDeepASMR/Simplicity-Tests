@@ -24,6 +24,7 @@ def Test_SSt(n: int) -> bool:
         a = random.randint(2, n - 1)
         g = ((n - 1) // 2)
         r = pow(a, g, n)
+
         if gcd(a, n) > 1:
             return False
 
