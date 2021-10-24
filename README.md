@@ -1,2 +1,2 @@
 # simplicity-tests
-# Fermat, Solovay–Strassen, Miller–Rabin
+## Fermat, Solovay–Strassen, Miller–Rabin
