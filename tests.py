@@ -12,7 +12,7 @@ def gcd(a: int, b: int) -> int:
 
 
 def Test_Ferma(n: int) -> bool:
-    for i in range(1000):
+    for i in range(10000):
         g = random.randint(2, n - 1)
         if pow(g, n-1, n) != 1:
             return False
@@ -20,7 +20,7 @@ def Test_Ferma(n: int) -> bool:
 
 
 def Test_SSt(n: int) -> bool:
-    for i in range(1000):
+    for i in range(10000):
         a = random.randint(2, n - 1)
         g = ((n - 1) // 2)
         r = pow(a, g, n)
@@ -38,30 +38,22 @@ def Test_SSt(n: int) -> bool:
 
 
 def Test_MR(n: int) -> bool:
-    def toBinary(j: int):
-        r = []
-        while j > 0:
-            r.append(j % 2)
-            j = j // 2
-            return r
-
-    def MillerRabin(m: int) -> bool:
-        for j in range(1000):
-            a = random.randint(1, m - 1)
-            b = toBinary(m - 1)
-            d = 1
-            for i in range(len(b) - 1, -1, -1):
-                x = d
-                d = pow(d*d, 1, m)
-                if d == 1 and x != 1 and x != m - 1:
-                    return False
-                if b[i] == 1:
-                    d = pow(d*a, 1, m)
-                    if d != 1:
-                        return False
-                    return True
-
-    return MillerRabin(n)
+    r, s = 0, n - 1
+    while s % 2 == 0:
+        r += 1
+        s //= 2
+    for _ in range(10000):
+        a = random.randrange(2, n - 1)
+        x = pow(a, s, n)
+        if x == 1 or x == n - 1:
+            continue
+        for _ in range(r - 1):
+            x = pow(x, 2, n)
+            if x == n - 1:
+                break
+        else:
+            return False
+    return True
 
 
 def Tests(n: int) -> str:
@@ -72,4 +64,5 @@ def Tests(n: int) -> str:
 
 
 num = int(sys.argv[1])
+
 print(Tests(num))
