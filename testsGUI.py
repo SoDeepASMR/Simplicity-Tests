@@ -1,8 +1,7 @@
 from PyQt5.QtCore import (QCoreApplication, QMetaObject, QRect, QSize, Qt)
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
-import random, sympy, sys, time
-import colorlabels as cl
+import random, sympy, sys
 
 
 def gcd(a: int, b: int) -> int:
