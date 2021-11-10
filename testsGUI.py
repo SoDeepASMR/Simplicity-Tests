@@ -1,5 +1,5 @@
 from PyQt5.QtCore import (QCoreApplication, QMetaObject, QRect, QSize, Qt)
-from PyQt5.QtGui import *
+from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import *
 import random, sympy, sys
 
@@ -213,7 +213,6 @@ class Ui_Window(object):
             n = int(self.lineEdit.text())
             self.textBrowser.append(Test_Ferma(n) + '[По тесту Миллера-Рабина]<br>')
         self.lineEdit.clear()
-
 
 
 app = QApplication(sys.argv)
