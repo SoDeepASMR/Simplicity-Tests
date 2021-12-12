@@ -34,7 +34,7 @@ def Test_SSt(n: int) -> bool:
         if r % n != sympy.jacobi_symbol(a, n) % n:
             return False
 
-    return True-
+    return True
 
 
 def Test_MR(n: int) -> bool:
